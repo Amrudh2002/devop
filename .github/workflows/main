@@ -1,0 +1,19 @@
+name: File and Folder Task
+
+on:
+  workflow_dispatch:
+
+jobs:
+  file-ops:
+    runs-on: self-hosted
+
+    steps:
+      - name: Create Folder1 and 1.txt
+        run: |
+          mkdir "$env:USERPROFILE\Desktop\Folder1"
+          echo "This is file 1." > "$env:USERPROFILE\Desktop\Folder1\1.txt"
+
+      - name: Create Folder2 and copy file
+        run: |
+          mkdir "$env:USERPROFILE\Desktop\Folder2"
+          Copy-Item "$env:USERPROFILE\Desktop\Folder1\1.txt" "$env:USERPROFILE\Desktop\Folder2"
